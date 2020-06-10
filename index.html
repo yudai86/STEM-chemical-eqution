@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Programming STEM Project - [Chemical Formula]</title>
+	<style>
+		/* styles for layout */
+		.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		div.center {
+			width: 800px;
+		}
+
+		/* styles for colors and fonts */
+		.answer {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="center">
+		<h3>Programming STEM Project - [Chemical Equation]</h3>
+		<p>
+			If you don't know about first number in chemical formula, you can use this progrmming to know number of atom. This
+			topic is about chemical formula. Type atom in input and output will be that first number.
+		</p>
+		<p>
+			INPUT:&nbsp;<input type="text" id="input1">
+      <input type="button" onclick="getInput()" value="GO"><br>
+      OUTPUT:&nbsp;<span id="output1" class="answer"></span>
+    </p>
+  </div>
+</body>
+<script>
+  /*
+  You can change anything on this page--HTML tags, CSS styles, JavaScript 
+  functions, etc. Do what you need to make it suitable for your STEM problem.
+  The lines of YOUR CODE are just a suggestion.
+
+  The getInput function will take user input from the page. You should call  
+  your functions from inside the getInput function.
+  
+  The writeOutput function will write some given text to the output span on
+  the page. You can call this function with your code when you have a result.
+  */
+
+  // This function will get the text entered into the "input" text field.
+  // Then it calls another function with the input as an argument.
+  function getInput() {
+    let inputField = document.getElementById("input1");
+    let input = inputField.value;
+  // console.log(input)
+    var partone = getOutput(input);// do something with the input
+    writeOutput(partone); // <-- replace this with YOUR CODE
+  }
+
+
+  // This function will write some text to the output span on the page.
+  function writeOutput(text) {
+    let outputSpan = document.getElementById("output1");
+    
+    outputSpan.innerText = text;
+  }
+
+  function getElement(input, index) {
+    let result = "";
+    let letter = input.charAt(index);
+    
+    if (isNaN(letter)) {
+      result += letter;
+    }
+    
+    letter = input.charAt(index + 1);
+
+    if( isNaN(letter) ) {
+      if (letter == letter.toLowerCase()) {
+        result += letter;
+      }
+    }
+    return result;
+  }
+
+  function getOutput(input) {
+    let output = "";
+    let coeff = 1;
+    let isElement = false;
+    let i = 0;
+    while (i < input.length) {
+      if (isNaN(input.charAt(i))) {
+        if (isElement) {
+          output += coeff;
+          coeff = 1;
+        }
+        let elem = getElement(input, i);
+        output += elem;
+        i += elem.length;
+        isElement = true;
+      } else {
+        if (isElement) {
+          output += coeff * input.charAt(i);
+          coeff = 1;
+        } else {
+          coeff = input.charAt(i);
+        }
+        isElement = false;
+        i++;
+      }
+    }
+    return output;
+  }
+
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  YOUR CODE  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+ function getpartone(input){
+   var x = true;
+   var y = 1;
+   var partone;
+  //  while(x){
+  for(let i=1; i<=input.length; i++) {
+    // console.log(input.substring(0,i))
+    //  console.log(Number(input.substring(0,i)))
+     
+     if(isNaN(Number(input.substring(0,i)))){
+    //  if(Number(input.substring(0,i)) == NaN){
+      //  x = false;
+      // console.log("get data")
+       return partone = input.substring(0,i-1);
+      //  console.log("partone = " + partone)
+     }
+    else{
+      // console.log("notting")
+      // y++;
+    }
+   }
+  // return partone;
+ }
+
+function getparttwo(input){
+for(let i=1; i<=input.length; i++) {
+  if(isNaN(Number(input.substring(0,i))) == true){
+    return parttwo = input.substring(0,i-1);
+  }
+  else{
+
+  }
+}
+// return parttwo;
+ }
+
+ function getpartthree(input){
+   for(let i=1; i<=input.length; i++) {
+     if(isNaN(Number(input.substring(0,i))) == true){
+       return partthree = input.substring(0,i-1);
+     }
+     else{
+
+     }
+   }
+   //return partthree;
+ }
+ 
+  // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑  YOUR CODE  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+
+</script>
+
+</html>
